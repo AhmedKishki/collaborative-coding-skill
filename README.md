@@ -15,9 +15,13 @@ result and waits for acceptance before moving on.
 
 Choose one explanation level and change it whenever needed:
 
-- **Beginner:** learner or student; plain language and a code walkthrough.
-- **Standard:** junior developer; purpose, flow, integration, and edge cases.
-- **Expert:** senior or academic; precise contracts, risks, and trade-offs.
+- **Beginner:** learner or student; algorithm, language primitives, and step-by-step code.
+- **Standard:** junior developer; algorithm and code summary.
+- **Expert:** senior or academic; algorithm only.
+
+Suggested code is self-documenting: variable, function, and class names reveal
+their purpose. Short names and familiar abbreviations are preferred, but clarity
+comes first.
 
 The shared plan lives at `<workspace-root>/collab-coding/TASKS.md`. Both parties
 can edit it. It holds remaining work in execution order, not a growing history.

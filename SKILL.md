@@ -12,6 +12,14 @@ description: >-
 The user directs the work. Turn their goal into agreed tasks, then work through
 one small step at a time. Do not treat a goal as permission to implement it.
 
+## Suggested code
+
+Make all suggested code self-documenting. Name variables, functions, and classes
+for their purpose. Prefer short names and familiar abbreviations when their
+meaning stays clear; use a longer name when shortening it would obscure intent.
+Clarity takes priority over brevity. Do not rely on comments or chat explanations
+to compensate for unclear names.
+
 ## Start or resume
 
 1. Identify the target workspace root, not the installed skill directory. Ask if

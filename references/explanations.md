@@ -5,31 +5,29 @@ Standard, or Expert. Do not infer expertise. Keep that choice until the user
 changes it. Explain each proposed patch before asking for approval. Do not print
 all three levels unless the user asks for them.
 
-Every level covers what changes, why it serves the goal, how the code works, and
-how it will be checked. Explain material limitations and risks at every level.
-The level changes the vocabulary and depth, never the approval boundary or the
-amount of code shown. Avoid unrelated tutorials and repeated explanations.
-Show each code block once; refer back to it rather than repeating it.
+Use the scope below for the explanation. The level does not change the approval
+boundary, amount of code shown, or required check and risk disclosure. Keep that
+proposal context separate from the explanation. Avoid unrelated tutorials and
+repetition. Show each code block once; refer back to it instead of repeating it.
 
 ## Beginner — learner or student
 
-Use plain language, define unfamiliar terms, and walk through the changed code
-in execution order. Connect the input, operations, and result. Use a small example
-when helpful. Give enough detail to understand the patch without assumed coding
-knowledge; do not explain unrelated parts of the project.
+Explain the algorithm in plain language, then the language primitives and
+constructs used, then the code step by step in execution order. Define relevant
+types, operators, variables, functions, and control flow without assuming prior
+knowledge. Connect each step to the algorithm; use a small example when helpful.
 
 ## Standard — junior developer
 
-Explain the purpose, key control or data flow, project integration, and relevant
-edge cases. Use familiar programming terms with brief clarification where needed.
-Prefer a short paragraph or a few bullets over a line-by-line tutorial.
+Explain the algorithm, then summarize how the code implements it. Cover the main
+functions and control or data flow concisely. Skip language-primitive definitions
+and line-by-line walkthroughs.
 
 ## Expert — senior or academic
 
-Lead with the contract, rationale, and trade-offs. Be terse about routine syntax;
-be precise about relevant invariants, failure modes, complexity, concurrency,
-security, or theoretical assumptions. Expand only where the proposed code needs
-that depth. Do not add jargon or claim properties the code does not establish.
+Explain the algorithm only: its method, why it works, and relevant assumptions,
+invariants, or complexity. Omit code summaries, syntax lessons, and code
+walkthroughs. Do not add jargon or claim properties the algorithm does not have.
 
 ## Same code, different explanations
 
@@ -40,13 +38,15 @@ def valid_age(age: int) -> bool:
     return 0 <= age <= 130
 ```
 
-- **Beginner:** This function checks whether `age` is between 0 and 130, including
-  both ends. It returns `True` inside that range and `False` outside it. `int` is a
-  type hint, not a runtime check: this code assumes the caller supplies an integer.
-  Check 0 and 130 as accepted values and -1 and 131 as rejected values.
-- **Standard:** Add an inclusive range predicate for an already validated integer.
-  It does not enforce the input type at runtime. Test both limits and adjacent
-  out-of-range values; keep parsing and type validation in the caller.
-- **Expert:** Inclusive range predicate with an integer-input precondition; runtime
-  type enforcement remains upstream. Boundary tests cover both endpoints and
-  adjacent failures. No coercion or input-type guarantee is introduced.
+- **Beginner:** The algorithm accepts an integer age only when it meets both
+  limits, 0 and 130. `def` declares the function; `age` is its input parameter.
+  `int` and `bool` are type hints for the input and result, not runtime checks.
+  The `<=` operator means less than or equal to.
+  First, `0 <= age` checks the lower limit. If it passes, `age <= 130` checks the
+  upper limit. `return` sends back the resulting Boolean: `True` if both checks
+  pass, otherwise `False`. For example, 18 passes both checks; 131 fails the second.
+- **Standard:** Test both inclusive bounds on an already validated integer; accept
+  only when both hold. The function returns the result of a chained comparison.
+  Input-type validation remains the caller's responsibility.
+- **Expert:** Inclusive interval membership with an integer-input precondition:
+  accept exactly when both lower and upper bounds hold. No iteration is needed.
